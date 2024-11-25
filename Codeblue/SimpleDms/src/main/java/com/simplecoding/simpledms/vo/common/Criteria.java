@@ -43,8 +43,8 @@ public class Criteria implements Serializable {
 	private int lastIndex = 1;
 
 	/** recordCountPerPage */
-	private int recordCountPerPage = 10; // 화면에 보일 개수
-	private int totalItems = 0;          // 총건수
+	private int recordCountPerPage = 10; // 화면에 보일 갯수
+	private int totalItems = 0; // 총 건수
 
 	private String insertTime;
 

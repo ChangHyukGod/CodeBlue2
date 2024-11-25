@@ -13,6 +13,7 @@
 
 <!--   TODO: 별칭 설정 -->
     <typeAliases>
+        <typeAlias type="com.simplecoding.simpledms.vo.auth.Member" alias="Member"/>
 
     </typeAliases>
 </configuration>
