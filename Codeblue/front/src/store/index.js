@@ -5,4 +5,5 @@ export default createStore({
   state: {
     loggedIn : user!=null? true : false 
   },
+  
 })
