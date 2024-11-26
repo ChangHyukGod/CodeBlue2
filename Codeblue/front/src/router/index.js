@@ -27,6 +27,14 @@ const routes = [
     path: '/findPassword',
     component: () => import('../views/auth/FindPassword.vue')
   },
+  {
+    path: '/review',
+    component: () => import('../views/review/ReviewMain.vue')
+  },
+  {
+    path: '/add-review',
+    component: () => import('../views/review/AddReview.vue')
+  }
 ]
 
 
