@@ -5,7 +5,6 @@
       <div class="col-xl-10 col-lg-12 col-md-9">
         <div class="card mt-5">
           <div class="card-body p-0">
-            <!-- Nested Row within Card Body -->
             <div class="row">
               <!-- TODO: 왼쪽: 이미지(강아지그림) -->
               <div class="col-lg-6">
@@ -52,10 +51,19 @@
                     >
                       등록
                     </button>
+                    <!-- 에러 메시지 표시 -->
+                    <div
+                      v-if="errorMessage"
+                      class="alert alert-danger text-center"
+                      role="alert"
+                      v-html="errorMessage"
+                    ></div>
                   </div>
                   <hr />
                   <div class="text-center">
-                    <a href="/login"> Already have an account? Login! </a>
+                    <a href="/login">
+                      이미 계정이 있으신가요? 로그인 하세요!
+                    </a>
                   </div>
                 </div>
               </div>
@@ -78,17 +86,23 @@ export default {
         name: "",
         codeName: "ROLE_USER",
       },
+
+      errorMessage: "", // 에러 메시지 상태 관리
     };
   },
   methods: {
     async register() {
       try {
         let response = await MemberService.insert(this.user);
-        console.log(response.data); // 디버깅
+        console.log(response.data); 
 
         alert("회원가입이 되었습니다.");
+        this.$router.push("/login");
       } catch (error) {
-        alert("회원가입시 오류가 발생했습니다.");
+        this.errorMessage = `
+          이미 가입된 이메일이 있습니다.
+        `;
+
         console.log(error);
       }
     },
@@ -102,4 +116,17 @@ export default {
 </script>
 
 <style>
+.alert {
+  font-size: 0.9rem;
+  border-radius: 5px;
+  padding: 10px 15px;
+}
+.alert-danger {
+  background-color: #f8d7da;
+  color: #842029;
+  border: 1px solid #f5c2c7;
+}
+.alert .bi {
+  font-size: 1.2rem;
+}
 </style>

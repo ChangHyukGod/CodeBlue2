@@ -27,7 +27,6 @@ public class UserResDto {
         this.accessToken = accessToken;
         this.email = email;
         this.codeName = codeName;
-        
     }
 
     // TODO: 비밀번호(password)랑 이름(name)도 보낼 수 있지만 필요 없으면 안 보내도 됨

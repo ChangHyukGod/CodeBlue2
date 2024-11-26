@@ -1,11 +1,9 @@
-// LoginView.vue
 <template>
   <div>
     <div class="row justify-content-center">
       <div class="col-xl-10 col-lg-12 col-md-9">
         <div class="card mt-5">
           <div class="card-body p-0">
-            <!-- {/* Nested Row within Card Body */} -->
             <div class="row">
               <!-- TODO: 이미지(좌) -->
               <div class="col-lg-6">
@@ -18,7 +16,7 @@
               <div class="col-lg-6">
                 <div class="p-5">
                   <div class="text-center">
-                    <h1 class="h4 mb-4">Welcome Back!</h1>
+                    <h1 class="h4 mb-4">Welcome!</h1>
                   </div>
                   <div class="user">
                     <div class="form-group">
@@ -37,17 +35,29 @@
                         v-model="user.password"
                       />
                     </div>
-
                     <button
                       class="btn btn-primary btn-user w-100 mb-3"
                       @click="login"
                     >
                       Login
                     </button>
+                    <!-- 에러 메시지 표시 -->
+                    <div
+                      v-if="errorMessage"
+                      class="alert alert-danger text-center mt-3"
+                      role="alert"
+                      v-html="errorMessage"
+                    ></div>
                   </div>
                   <hr />
                   <div class="text-center">
-                    <a class="small" href="/register"> Create an Account! </a>
+                    <div class="d-flex justify-content-center">
+                      <a class="small mx-2" href="/register">회원가입</a>
+                      <span>|</span>
+                      <a class="small mx-2" href="#">아이디 찾기</a>
+                      <span>|</span>
+                      <a class="small mx-2" href="#">비밀번호 찾기</a>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -61,6 +71,7 @@
 
 <script>
 import MemberService from "@/services/auth/MemberService";
+
 export default {
   data() {
     return {
@@ -68,6 +79,8 @@ export default {
         email: "",
         password: "",
       },
+      
+      errorMessage: "", // 에러 메시지 상태 관리
     };
   },
   methods: {
@@ -76,23 +89,45 @@ export default {
         let response = await MemberService.login(this.user);
         console.log(response.data);
 
-        this.$store.state.loggedIn = true; 
-    
+        this.$store.state.loggedIn = true;
+
         localStorage.setItem("user", JSON.stringify(response.data));
+
+        this.errorMessage = ""; // 에러 메시지 초기화
 
         this.$router.push("/");
       } catch (error) {
-        this.$store.state.loggedIn == false; 
+        this.$store.state.loggedIn = false;
+
+        this.errorMessage = `
+          로그인에 실패했습니다.<br />
+          아이디 또는 비밀번호를 맞게 입력해 주세요.
+        `;
+
         console.log(error);
       }
     },
   },
   mounted() {
-    if (this.$store.state.loggedIn == true) {
+    if (this.$store.state.loggedIn === true) {
       this.$router.push("/");
     }
   },
 };
 </script>
 
-<style></style>
+<style>
+.alert {
+  font-size: 0.9rem;
+  border-radius: 5px;
+  padding: 10px 15px;
+}
+.alert-danger {
+  background-color: #f8d7da;
+  color: #842029;
+  border: 1px solid #f5c2c7;
+}
+.alert .bi {
+  font-size: 1.2rem;
+}
+</style>
