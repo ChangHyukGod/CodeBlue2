@@ -51,20 +51,47 @@
 
           <!-- TODO: 로그인 메뉴(오른쪽) -->
           <ul class="navbar-nav">
-            <!-- {/* 로그인 시작 */} -->
+            <!-- 회원가입 버튼 -->
+            <!-- 회원가입 버튼 -->
             <li class="nav-item" v-if="this.$store.state.loggedIn == false">
-              <a class="nav-link active" href="/register"> 회원가입 </a>
+              <a
+                class="nav-link btn btn-outline-primary rounded-pill px-4 py-2 m-2"
+                href="/register"
+                style="
+                  border-color: #007bff;
+                  color: #007bff;
+                  background-color: transparent;
+                "
+                >회원가입</a
+              >
             </li>
+            <!-- 로그인 버튼 -->
             <li class="nav-item" v-if="this.$store.state.loggedIn == false">
-              <a class="nav-link active" href="/login"> 로그인 </a>
+              <a
+                class="nav-link btn btn-outline-primary rounded-pill px-4 py-2 m-2"
+                href="/login"
+                style="
+                  border-color: #007bff;
+                  color: #007bff;
+                  background-color: transparent;
+                "
+                >로그인</a
+              >
             </li>
-            <!-- {/* 로그인 끝 */} -->
-
-            <!-- {/* 로그아웃 시작 */} -->
+            <!-- 로그아웃 버튼 -->
             <li class="nav-item" v-if="this.$store.state.loggedIn == true">
-              <a class="nav-link active" href @click="logout"> 로그아웃 </a>
+              <a
+                class="nav-link btn btn-outline-danger rounded-pill px-4 py-2 m-2"
+                href
+                @click="logout"
+                style="
+                  border-color: #dc3545;
+                  color: #dc3545;
+                  background-color: transparent;
+                "
+                >로그아웃</a
+              >
             </li>
-            <!-- {/* 로그아웃 끝 */} -->
           </ul>
         </div>
       </div>
@@ -79,10 +106,8 @@ export default {
     logout() {
       MemberService.logout();
 
-      // 공유변수
       this.$store.state.loggedIn = false;
 
-      // 로그인 페이지 강제이동
       this.$router.push("/login");
     },
   },
