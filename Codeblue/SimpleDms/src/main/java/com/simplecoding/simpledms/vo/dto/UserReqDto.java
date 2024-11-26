@@ -17,7 +17,7 @@ import lombok.*;
 @ToString
 public class UserReqDto {
 
-    private String email; // EMAIL
+    private String email; // ID
     private String password; // PASSWORD
 
 }

@@ -14,7 +14,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import javax.crypto.spec.SecretKeySpec;
 import java.util.ArrayList;
 import java.util.NoSuchElementException;
 
@@ -76,16 +75,6 @@ public class MemberService {
         return new UserResDto(jwt, // 웹토큰
                 userReqDto.getEmail(), // 이메일
                 codeName); // 권한명
-    }
-
-    // 이메일 찾기
-    public String findEmail(Member member) {
-        return memberMapper.findEmail(member);
-    }
-
-    // 비밀번호 찾기
-    public String findPassword(Member member) {
-        return memberMapper.findPassword(member);
     }
 
 }

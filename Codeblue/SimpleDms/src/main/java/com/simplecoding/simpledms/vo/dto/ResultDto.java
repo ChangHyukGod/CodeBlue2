@@ -22,4 +22,9 @@ public class ResultDto {
     // 총건수
     private Integer totalCount;
 
+
+
+
+    
+    
 }

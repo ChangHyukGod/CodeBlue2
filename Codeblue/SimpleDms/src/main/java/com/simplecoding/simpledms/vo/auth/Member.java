@@ -15,10 +15,9 @@ import lombok.*;
 @ToString
 public class Member {
 
-    private String email; // 이메일(기본키)
-    private String password; // 비밀번호
-    private String name; // 이름
-    private String codeName; // 권한명
-    private String ssn; // 주민등록번호
+    private String email; // 기본키
+    private String password;
+    private String name;
+    private String codeName;
 
 }

@@ -1,22 +1,31 @@
+// 회원가입
 <template>
   <div>
     <div class="row justify-content-center">
-      <div class="col-xl-6 col-lg-8 col-md-10">
-        <div class="card custom-card mt-5">
+      <div class="col-xl-10 col-lg-12 col-md-9">
+        <div class="card mt-5">
           <div class="card-body p-0">
             <div class="row">
-              <!-- TODO: email/password 입력양식  -->
-              <div class="col-lg-12">
+              <!-- TODO: 왼쪽: 이미지(강아지그림) -->
+              <div class="col-lg-6">
+                <!-- <img
+                  src="@/assets/images/puppy-1920_1280.jpg"
+                  class="img-fluid"
+                /> -->
+                <!-- <img :src="require('@/assets/images/puppy-1920_1280.jpg')" class="img-fluid"/> -->
+              </div>
+              <!-- TODO: 오른쪽: email/password 입력양식  -->
+              <div class="col-lg-6">
                 <div class="p-5">
                   <div class="text-center">
-                    <h1 class="h4 text-gray-900 mb-4">회원가입</h1>
+                    <h1 class="h4 text-gray-900 mb-4">회원 가입</h1>
                   </div>
                   <div class="user">
                     <div class="form-group">
                       <input
                         type="email"
                         class="form-control form-control-user mb-3"
-                        placeholder="이메일을 입력하세요."
+                        placeholder="이메일 입력"
                         v-model="user.email"
                       />
                     </div>
@@ -24,32 +33,23 @@
                       <input
                         type="password"
                         class="form-control form-control-user mb-3"
-                        placeholder="패스워드를 입력하세요."
+                        placeholder="패스워드 입력"
                         v-model="user.password"
                       />
                       <div class="form-group">
                         <input
                           type="text"
                           class="form-control form-control-user mb-3"
-                          placeholder="이름을 입력하세요."
+                          placeholder="이름 입력"
                           v-model="user.name"
-                        />
-                      </div>
-                      <div class="form-group">
-                        <input
-                          type="password"
-                          class="form-control form-control-user mb-3"
-                          placeholder="주민등록번호를 입력하세요."
-                          v-model="user.ssn"
                         />
                       </div>
                     </div>
                     <button
-                      button
-                      class="btn btn-custom w-100 mb-3"
+                      class="btn btn-primary btn-user w-100 mb-3"
                       @click="register"
                     >
-                      Sign Up
+                      등록
                     </button>
                     <!-- 에러 메시지 표시 -->
                     <div
@@ -84,7 +84,6 @@ export default {
         email: "",
         password: "",
         name: "",
-        ssn: "",
         codeName: "ROLE_USER",
       },
 
@@ -95,7 +94,7 @@ export default {
     async register() {
       try {
         let response = await MemberService.insert(this.user);
-        console.log(response.data);
+        console.log(response.data); 
 
         alert("회원가입이 되었습니다.");
         this.$router.push("/login");
@@ -117,7 +116,6 @@ export default {
 </script>
 
 <style>
-/* 에러 메시지 디자인 시작 */
 .alert {
   font-size: 0.9rem;
   border-radius: 5px;
@@ -130,34 +128,5 @@ export default {
 }
 .alert .bi {
   font-size: 1.2rem;
-}
-/* 에러 메시지 디자인 끝 */
-
-/* 회원가입 버튼 디자인 시작 */
-.btn-custom {
-  background-color: black;
-  color: white;
-  border-radius: 50px;
-  padding: 10px 20px;
-  font-size: 16px;
-  border: none;
-}
-
-.btn-custom:hover,
-.btn-custom:focus,
-.btn-custom:active {
-  background-color: black;
-  color: white;
-  outline: none;
-  box-shadow: none;
-}
-/* 회원가입 버튼 디자인 끝 */
-
-/* 카드의 테두리 색상을 흰색으로 설정 */
-.custom-card {
-  background-color: #f8f9fa; /* 배경색: 라이트그레이 */
-  border: 1px solid white; /* 테두리 흰색 */
-  border-radius: 30px; /* 둥근 모서리 */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 은은한 그림자 */
 }
 </style>
