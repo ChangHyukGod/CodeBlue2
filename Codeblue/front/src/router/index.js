@@ -19,6 +19,14 @@ const routes = [
     path: '/login',
     component: () => import('../views/auth/LoginView.vue')
   },
+  {
+    path: '/findEmail',
+    component: () => import('../views/auth/FindEmail.vue')
+  },
+  {
+    path: '/findPassword',
+    component: () => import('../views/auth/FindPassword.vue')
+  },
 ]
 
 
