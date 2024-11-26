@@ -1,3 +1,4 @@
+
 // components/HeaderCom.vue // vueInit
 <template>
   <!-- 최상단 메뉴 -->
@@ -36,6 +37,7 @@
             </button>
           </form>
         </div>
+
         <button
           class="navbar-toggler"
           type="button"
@@ -47,6 +49,7 @@
         >
           <span class="navbar-toggler-icon"></span>
         </button>
+
         <!-- TODO: 대메뉴 -->
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
@@ -64,6 +67,7 @@
     </nav>
   </div>
 </template>
+
 <script>
 export default {};
 </script>

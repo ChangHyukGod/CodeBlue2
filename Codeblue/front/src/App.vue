@@ -1,12 +1,15 @@
 <template>
   <!-- 머리말 : HeaderCom -->
   <HeaderCom />
+
   <!-- 본문 -->
   <div class="container mt-3">
     <router-view />
   </div>
+
   <FooterCom />
 </template>
+
 <script>
 import FooterCom from "./components/FooterCom.vue";
 import HeaderCom from "./components/HeaderCom.vue";
@@ -17,6 +20,7 @@ export default {
   },
 };
 </script>
+
 <style>
 @import "@/assets/css/main.css";
 @font-face {
