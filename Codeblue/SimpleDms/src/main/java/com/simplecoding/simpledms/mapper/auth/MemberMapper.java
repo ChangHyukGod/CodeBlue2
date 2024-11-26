@@ -23,4 +23,9 @@ public interface MemberMapper {
     // 회원 상세조회
     public Optional<Member> selectMember(String email);
 
+    // 이메일 찾기
+    public String findEmail(Member member);
+
+    // 비밀번호 찾기
+    public String findPassword(Member member);
 }

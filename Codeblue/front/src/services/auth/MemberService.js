@@ -9,6 +9,7 @@ const insert = (data) => {
 
 // TODO: 로그인
 const login = (data) => {
+    console.log(data);
     return axios.post(baseURL + `/auth/login`, data);
 };
 
@@ -17,10 +18,23 @@ const logout = () => {
     localStorage.removeItem("user"); 
 };
 
+// TODO: 이메일 찾기
+const findEmail = (data) => {
+    return axios.post(baseURL + `/auth/find-email`, data);
+};
+
+// TODO: 비밀번호 찾기
+const findPassword = (data) => {
+    return axios.post(baseURL + `/auth/find-password`, data);
+};
+
 const MemberService = {
     insert,
     login,
-    logout
+    logout,
+    findEmail,
+    findPassword
 }
+
 
 export default MemberService;
