@@ -5,13 +5,13 @@
   <div>
     <b-nav class="upper_menu">
       <div class="upper_menu_link">
-        <b-nav-item>로그인</b-nav-item>
+        <b-nav-item href="/login">로그인</b-nav-item>
         <b-nav-item>|</b-nav-item>
-        <b-nav-item>회원가입</b-nav-item>
+        <b-nav-item href="/register">회원가입</b-nav-item>
         <b-nav-item>|</b-nav-item>
-        <b-nav-item>예약확인</b-nav-item>
+        <b-nav-item href="/">예약확인</b-nav-item>
         <b-nav-item>|</b-nav-item>
-        <b-nav-item>고객센터</b-nav-item>
+        <b-nav-item href="/">고객센터</b-nav-item>
       </div>
     </b-nav>
   </div>
@@ -20,7 +20,7 @@
       <div class="container-fluid">
         <img src="@/assets/icon.png" class="gpt-icon" />
         &nbsp;&nbsp;
-        <a class="navbar-brand" href="#"> 지조결 L.L.A</a>
+        <a class="navbar-brand" href="/"> 지조결 L.L.A</a>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <!-- 검색창 -->
         <div class="search_box">
